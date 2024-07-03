@@ -1,5 +1,5 @@
-org 0x7C00
-bits 16
+org 0x7C00   ; directive
+bits 16      ; directive
 
 %define ENDL 0x0D, 0x0A
 
@@ -40,7 +40,7 @@ main:
     mov ds, ax
     mov es, ax
     
-    ; setup stack
+    ; stack
     mov ss, ax
     mov sp, 0x7C00      ; stack grows downwards from where we are loaded in memory
 
@@ -55,5 +55,5 @@ main:
 
 msg_hello: db 'Hello world!', ENDL, 0
 
-times 510-($-$$) db 0 ; one sector:512
+times 510-($-$$) db 0 ; First sector:512, Also known as MBR: Master Boot Record 
 dw 0AA55h ; boot signature 
